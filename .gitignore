@@ -1,14 +1,48 @@
-# Python
+# Python bytecode & cache
 __pycache__/
 *.py[cod]
 *$py.class
+*.pyo
+*.pyd
+
+# Testing & coverage
 .pytest_cache/
+.coverage
+htmlcov/
+.cache/
+
+# Virtual environments
 .venv/
 venv/
 env/
-.env
+ENV/
 
-# Project specific
-data/raw/*.csv
+# Environment files & local secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
 data/*.db
-outputs/
+data/*.sqlite
+data/*.sqlite3
+
+# Raw data and generated outputs
+data/raw/*.csv
+outputs/*
+!outputs/.gitkeep
+!data/raw/.gitkeep
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+
+# OS generated files
+.DS_Store
+Thumbs.db
