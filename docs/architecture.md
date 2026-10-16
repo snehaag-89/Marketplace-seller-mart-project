@@ -1,5 +1,11 @@
 # Architecture & Design
 
+### Data Flow
+
+![Marketplace Seller Mart data flow](images/architecture-diagram.png)
+
+
+
 ## 1. Data Pipeline Architecture (SQLite)
 
 We use a 3-tier architecture with specific table prefixes in SQLite:
