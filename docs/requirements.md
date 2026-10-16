@@ -1,8 +1,8 @@
 # Requirements & Implementation Matrix
 
-**Note**: The detailed assessment requirements have been verified against the provided assignment Excel file (DAI-029: Marketplace Seller Mart for Sneha Agrawal). The matrix distinguishes confirmed core requirements from proposed design choices and assumptions.
+DAI-029: Marketplace Seller Mart 
 
-## 1. Confirmed Requirements (From Assessment Brief)
+## 1. Confirmed Requirements 
 
 | Req ID | Requirement | Acceptance Criteria |
 |---|---|---|

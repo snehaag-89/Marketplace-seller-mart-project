@@ -1,33 +1,32 @@
 # Implementation Plan
 
-**Deadline**: 17 October 2026
 
-## Phase 1: Foundation & Data Generation (Day 1)
+## Phase 1: Foundation & Data Generation 
 *   Set up Python virtual environment, `requirements.txt`, and clean project skeleton.
 *   Create synthetic CSV data generator. **Crucial Constraint**: Generate data such that each `order_id` contains items belonging to exactly *one* `seller_id`.
 *   Define `pipeline_batches` and `raw_rejections` tables outside the main data transaction for auditability.
 
-## Phase 2: Ingestion & Incremental Logic (Day 2-3)
+## Phase 2: Ingestion & Incremental Logic 
 *   **Prioritize a working end-to-end pipeline**: Implement ingestion from CSV -> `raw_` -> `stg_`.
 *   Implement deterministic SHA-256 hashing for record-level change detection, handling identical and stale records.
 *   Implement dual-transaction logic: one for atomic business data (`raw_`, `stg_`), and one for persistent batch tracking and error logging.
 *   Add validation rule: Divert records to `raw_rejections` if an order violates the single-seller constraint.
 
-## Phase 3: Analytics & Metrics Calculation (Day 4)
+## Phase 3: Analytics & Metrics Calculation 
 *   Create `mart_seller_weekly_metrics`.
 *   Write SQL aggregations calculating Sales Volume, Order Return Rate, and Cancellation Rate. 
 *   Use CTEs to pre-aggregate items and deduplicate returns at the order level *before* grouping, ensuring no fan-out inflation.
 *   Implement explicit denominators (e.g. only 'DELIVERED' or 'SHIPPED' for return rate denominator) and zero-denominator handling.
 
-## Phase 4: AI Integration & Fallback (Day 5)
+## Phase 4: AI Integration & Fallback 
 *   Implement `AIProvider` interface (compatible with a local/free model) and the deterministic fallback.
 *   Implement validation logic to ensure the AI's cited numbers match calculated facts.
 
-## Phase 5: Regression Testing & Refinement (Day 6)
+## Phase 5: Regression Testing & Refinement
 *   Write `pytest` suites focusing on the explicit requirement-to-test mapping (including the mandatory failure/edge-case demonstration).
 *   Perform a Clean Checkout Test: clone to a fresh directory, setup, and run end-to-end successfully.
 
-## Phase 6: Documentation & Demo Preparation (Day 7-8)
+## Phase 6: Documentation & Demo Preparation 
 *   Finalize `README.md` (setup/architecture) and the 1-page design/decision note.
 *   Record the 5-8 minute demo video showcasing the working pipeline.
 
